@@ -260,7 +260,7 @@
   .aside-val a:hover { color: var(--ink); border-color: var(--ink); }
 
   /* WRITINGS */
-  .writings-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+  .writings-grid { display: grid; grid-template-columns: repeat(2,1fr); }
 
   .writing-card {
     padding: 2.2rem 2rem;
@@ -269,8 +269,8 @@
     text-decoration: none; color: inherit;
     display: block; position: relative; overflow: hidden;
   }
-  .writing-card:nth-child(3n) { border-right: none; }
-  .writing-card:nth-child(n+4) { border-bottom: none; }
+  .writing-card:nth-child(2n) { border-right: none; }
+  .writing-card:nth-child(n+3) { border-bottom: none; }
 
   .writing-card::before {
     content: ''; position: absolute; inset: 0;
@@ -406,7 +406,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .writings-grid { grid-template-columns: 1fr; }
     .writing-card { border-right: none !important; }
-    .writing-card:nth-child(n+4) { border-bottom: 0.5px solid var(--g200) !important; }
+    .writing-card:nth-child(n+3) { border-bottom: 0.5px solid var(--g200) !important; }
     .writing-card:last-child { border-bottom: none !important; }
     .project-item { grid-template-columns: 2rem 1fr auto; gap: 1rem; }
     .connect-row { flex-direction: column; }
@@ -456,9 +456,9 @@
 
   <!-- LEFT -->
   <div class="hero-left">
-    <p class="hero-eyebrow">Poet · Developer · Founder</p>
+    <p class="hero-eyebrow">Teacher · Developer · Founder</p>
     <h1 class="hero-name">Utsab<br/><em>Kafle</em></h1>
-    <p class="hero-desc">Writing code and verse from the foothills. Building software that breathes, and poems that compile.</p>
+    <p class="hero-desc">Teaching and coding from the foothills. Building software that breathes, and lessons that inspire.</p>
     <div class="hero-ctas">
       <a href="#writings" class="btn-solid">Read my writing</a>
       <a href="#works" class="btn-line">See my work →</a>
@@ -511,8 +511,8 @@
     </div>
     <div class="about-grid">
       <div>
-        <p class="about-lead">I write things — poems, prose, and programs. Based in Nepal, moving between the quiet of verse and the precision of code.</p>
-        <p class="about-body">I founded <a href="https://consicalabs.com" target="_blank" rel="noopener">Consica Labs</a>, a software company building thoughtful digital products. When I am not writing software, I am writing everything else — essays, poems, ideas that don't fit anywhere else.<br><br>This site is a slow accumulation. A shelf of work and words that matter.</p>
+        <p class="about-lead">I teach things — languages, code, and ideas. Based in Nepal, moving between the classroom and the codebase.</p>
+        <p class="about-body">I founded <a href="https://consicalabs.com" target="_blank" rel="noopener">Consica Labs</a>, a software company building thoughtful digital products. When I am not writing software, I am teaching — sharing knowledge, mentoring, and exploring ideas that don't fit anywhere else.<br><br>This site is a slow accumulation. A shelf of work and words that matter.</p>
       </div>
       <div class="about-aside">
         <div class="aside-item">
@@ -525,7 +525,7 @@
         </div>
         <div class="aside-item">
           <div class="aside-key">Craft</div>
-          <div class="aside-val">Software & Poetry</div>
+          <div class="aside-val">Software & Teaching</div>
         </div>
         <div class="aside-item">
           <div class="aside-key">Currently</div>
@@ -560,46 +560,32 @@
     </div>
     <div class="writings-grid">
 
-      <a href="#" class="writing-card">
-        <span class="wc-tag">Poem</span>
-        <h3 class="wc-title"><em>The Kathmandu Rains</em></h3>
-        <p class="wc-excerpt">The city holds its breath before the sky breaks open, and we mistake the smell of wet concrete for something holy...</p>
-        <div class="wc-date">Add your date</div>
-      </a>
-
-      <a href="#" class="writing-card">
+      <a href="writings/climate-change-and-its-impact-in-nepal.html" class="writing-card">
         <span class="wc-tag">Essay</span>
-        <h3 class="wc-title">On Writing Code Like Prose</h3>
-        <p class="wc-excerpt">There is a rhythm to well-structured code that mirrors the rhythm of a sentence that knows exactly when to end.</p>
-        <div class="wc-date">Add your date</div>
+        <h3 class="wc-title">Climate Change and Its Impact in Nepal</h3>
+        <p class="wc-excerpt">Nepal's temperature is projected to increase by about 0.90°C between 2016 and 2045. People affected by river flooding could double to around 350k by 2030...</p>
+        <div class="wc-date">Climate · Nepal</div>
       </a>
 
-      <a href="#" class="writing-card">
+      <a href="writings/aaaaa.html" class="writing-card">
         <span class="wc-tag">Poem</span>
-        <h3 class="wc-title"><em>Variables</em></h3>
-        <p class="wc-excerpt">We name things to hold them. x equals nothing until we decide what x means, and then we forget we chose.</p>
-        <div class="wc-date">Add your date</div>
+        <h3 class="wc-title"><em>AAAAA</em></h3>
+        <p class="wc-excerpt">what if, after talking with her for hours in my mind, the tongue won't stutter a word — what if, after spending a whole day with her thoughts, the ink gets freezed...</p>
+        <div class="wc-date">Love · Longing</div>
       </a>
 
-      <a href="#" class="writing-card">
-        <span class="wc-tag">Prose</span>
-        <h3 class="wc-title">Fog Between the Hills</h3>
-        <p class="wc-excerpt">In early November the fog arrives before you do, settling into the valleys like something that has always lived there.</p>
-        <div class="wc-date">Add your date</div>
-      </a>
-
-      <a href="#" class="writing-card">
+      <a href="writings/maybe.html" class="writing-card">
         <span class="wc-tag">Poem</span>
-        <h3 class="wc-title"><em>At 2am, the Terminal</em></h3>
-        <p class="wc-excerpt">The cursor blinks like a question no one asked. The function returns nothing, which is also a kind of answer.</p>
-        <div class="wc-date">Add your date</div>
+        <h3 class="wc-title"><em>Maybe</em></h3>
+        <p class="wc-excerpt">Maybe, if I had known you better. Maybe, if I had known that you wanted love differently. Maybe, things might have turned out differently...</p>
+        <div class="wc-date">Loss · Reflection</div>
       </a>
 
-      <a href="#" class="writing-card">
-        <span class="wc-tag">Essay</span>
-        <h3 class="wc-title">Building Small Companies</h3>
-        <p class="wc-excerpt">On the strange discipline of making something real from nothing, in a country still deciding what it wants to be.</p>
-        <div class="wc-date">Add your date</div>
+      <a href="writings/singing-birds.html" class="writing-card">
+        <span class="wc-tag">Poem</span>
+        <h3 class="wc-title"><em>Singing Birds</em></h3>
+        <p class="wc-excerpt">I wander, if it's a song of spring or a cry for love — if it's the joy of rain or the empty appetite...</p>
+        <div class="wc-date">Nature · Listening</div>
       </a>
 
     </div>
@@ -630,11 +616,11 @@
     </div>
     <div class="projects-list">
 
-      <a href="https://consicalabs.com" target="_blank" rel="noopener" class="project-item">
+      <a href="#" target="_blank" rel="noopener" class="project-item">
         <span class="p-num">01</span>
         <div class="p-body">
-          <span class="p-name">Consica Labs</span>
-          <span class="p-desc">Software company — building purposeful digital products</span>
+          <span class="p-name">Project One</span>
+          <span class="p-desc">nothing</span>
           <div class="p-tags">
             <span class="tag">Founder</span><span class="tag">Product</span><span class="tag">Software</span>
           </div>
@@ -711,9 +697,9 @@
         <span class="ci-handle">Consica Labs</span>
         <span class="ci-arrow">↗</span>
       </a>
-      <a href="mailto:your@email.com" class="connect-item">
+      <a href="mailto:utsab@consicalabs.com" class="connect-item">
         <span class="ci-platform">Email</span>
-        <span class="ci-handle">your@email.com</span>
+        <span class="ci-handle">utsab@consicalabs.com</span>
         <span class="ci-arrow">↗</span>
       </a>
     </div>
