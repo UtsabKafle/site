@@ -4,9 +4,70 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Utsab Kafle</title>
+<meta name="description" content="Official website of Utsab Kafle, founder of Consica Labs, sharing writings, poems, software projects, and teaching insights from Nepal." />
+<meta name="keywords" content="Utsab Kafle, Consica Labs, Nepal developer, Nepal teacher, Utsab Kafle writings, Utsab Kafle poems, software founder Nepal" />
+<meta name="author" content="Utsab Kafle" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+<meta name="theme-color" content="#fafaf8" />
+<link rel="canonical" href="https://utsabkafle.com.np/" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/assets/images/image2.png" />
+<link rel="apple-touch-icon" href="/assets/images/image2.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Utsab Kafle" />
+<meta property="og:title" content="Utsab Kafle | Founder of Consica Labs" />
+<meta property="og:description" content="Official website of Utsab Kafle, founder of Consica Labs, with essays, poems, and software work." />
+<meta property="og:url" content="https://utsabkafle.com.np/" />
+<meta property="og:image" content="https://utsabkafle.com.np/assets/images/image2.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Utsab Kafle | Founder of Consica Labs" />
+<meta name="twitter:description" content="Official website of Utsab Kafle, founder of Consica Labs, with essays, poems, and software work." />
+<meta name="twitter:image" content="https://utsabkafle.com.np/assets/images/image2.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://utsabkafle.com.np/#person",
+      "name": "Utsab Kafle",
+      "url": "https://utsabkafle.com.np/",
+      "image": "https://utsabkafle.com.np/assets/images/image2.png",
+      "jobTitle": "Founder, Teacher, Developer",
+      "worksFor": {
+        "@id": "https://consicalabs.com/#organization"
+      },
+      "sameAs": [
+        "https://consicalabs.com",
+        "https://www.tiktok.com/@kafleutsab",
+        "https://www.facebook.com/utshub"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://consicalabs.com/#organization",
+      "name": "Consica Labs",
+      "url": "https://consicalabs.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://utsabkafle.com.np/#website",
+      "url": "https://utsabkafle.com.np/",
+      "name": "Utsab Kafle",
+      "publisher": {
+        "@id": "https://utsabkafle.com.np/#person"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -35,6 +96,13 @@
   }
 
   ::selection { background: var(--ink); color: var(--white); }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
 
   /* NAV */
   nav {
@@ -234,7 +302,7 @@
     margin-bottom: 4.5rem;
   }
   .section-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--g300); }
-  .section-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--g400); }
+  .section-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--g400); margin: 0; font-weight: 400; }
   .section-rule { flex: 1; height: 0.5px; background: var(--g200); }
 
   /* decorative curve SVGs */
@@ -428,6 +496,8 @@
   </ul>
 </nav>
 
+<main id="main-content">
+
 <!-- HERO -->
 <div class="hero">
 
@@ -506,7 +576,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">01</span>
-      <span class="section-title">About</span>
+      <h2 class="section-title">About</h2>
       <div class="section-rule"></div>
     </div>
     <div class="about-grid">
@@ -555,7 +625,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">02</span>
-      <span class="section-title">Writings & Poems</span>
+      <h2 class="section-title">Writings & Poems</h2>
       <div class="section-rule"></div>
     </div>
     <div class="writings-grid">
@@ -611,7 +681,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">03</span>
-      <span class="section-title">Works & Projects</span>
+      <h2 class="section-title">Works & Projects</h2>
       <div class="section-rule"></div>
     </div>
     <div class="projects-list">
@@ -677,7 +747,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">04</span>
-      <span class="section-title">Connect</span>
+      <h2 class="section-title">Connect</h2>
       <div class="section-rule"></div>
     </div>
     <p class="connect-intro">Find me where the internet <em>breathes.</em></p>
@@ -705,6 +775,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>

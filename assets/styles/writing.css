@@ -27,6 +27,13 @@ body {
 
 ::selection { background: var(--ink); color: var(--white); }
 
+/* Screen reader only utility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -65,6 +72,20 @@ nav.scrolled {
   margin: 0 auto;
   padding: 10rem 3.5rem 6rem;
 }
+
+.article-breadcrumb {
+  font-family: var(--mono); font-size: 0.58rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--g400); margin-bottom: 1.3rem;
+}
+
+.article-breadcrumb a {
+  color: var(--g400); text-decoration: none;
+  border-bottom: 0.5px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.article-breadcrumb a:hover { color: var(--ink); border-color: var(--g300); }
 
 .article-tag {
   font-family: var(--mono); font-size: 0.54rem;
@@ -129,6 +150,20 @@ nav.scrolled {
 .back-link:hover { color: var(--ink); }
 .back-link span { transition: transform 0.3s; }
 .back-link:hover span { transform: translateX(-3px); }
+
+.author-note {
+  margin-top: 2rem;
+  padding: 1.2rem 0 0;
+  border-top: 0.5px solid var(--g200);
+  color: var(--g600);
+  font-size: 0.95rem;
+}
+
+.author-note a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--g300);
+}
 
 /* FOOTER */
 footer {
