@@ -91,29 +91,7 @@
     --serif: 'Cormorant Garamond', Georgia, serif;
     --mono:  'DM Mono', 'Courier New', monospace;
     --ease:  cubic-bezier(0.22, 1, 0.36, 1);
-    color-scheme: light dark;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink:   #ecebe7;
-      --white: #121211;
-      --g100:  #1c1c1a;
-      --g200:  #2c2b28;
-      --g300:  #45433f;
-      --g400:  #7d7a73;
-      --g500:  #99968e;
-      --g600:  #b3b0a9;
-      --g800:  #dcdad5;
-      --line:  #34332f;
-      --nav-bg: rgba(18,18,17,0.85);
-    }
-    /* decorative line art: hardcoded light-mode greys -> theme line colour */
-    .hero-rings circle, .hero-diagonals path, .deco path,
-    .portrait-rings circle, footer svg path { stroke: var(--line); }
-    .hero-diagonals circle, .deco circle { fill: var(--line); }
-    .portrait-frame img { filter: invert(0.9) hue-rotate(180deg); }
-    .portrait-frame::after { opacity: 0; }
+    color-scheme: light;
   }
 
   html { scroll-behavior: smooth; }
@@ -399,6 +377,97 @@
   .toolkit { font-size: 1.08rem; line-height: 1.9; color: var(--g800); }
   .toolkit span + span::before { content: ' · '; color: var(--g400); }
 
+  /* ON THE ROAD */
+  .road-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+  .roadshot { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+  .roadshot-img {
+    position: relative; width: min(460px, 100%); overflow: hidden;
+    /* fade every edge into the page so the illustration has no frame */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+                        linear-gradient(to bottom, transparent, #000 24%, #000 74%, transparent);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+                        linear-gradient(to bottom, transparent, #000 24%, #000 74%, transparent);
+            mask-composite: intersect;
+  }
+  .roadshot-img img {
+    display: block; width: 100%; height: auto;
+    animation: breathe 22s ease-in-out infinite alternate;
+  }
+  .mist {
+    position: absolute; left: -30%; width: 160%; height: 22%;
+    background: radial-gradient(ellipse at center, rgba(250,250,248,0.85), rgba(250,250,248,0) 70%);
+    filter: blur(6px); pointer-events: none;
+  }
+  .mist-a { top: 30%; animation: drift 14s ease-in-out infinite alternate; }
+  .mist-b { top: 64%; height: 16%; opacity: 0.8; animation: drift 19s ease-in-out infinite alternate-reverse; }
+  @keyframes breathe { from { transform: scale(1); } to { transform: scale(1.05) translateY(-1%); } }
+  @keyframes drift { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+  @keyframes sway  { 0%,100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+
+  /* On the Road: a sticky stage. Scrolling the track moves the bike along the road. */
+  #road { overflow: visible; }
+  .road-facts { margin-top: 2.4rem; max-width: 26rem; }
+  .ride-track { position: relative; height: 340vh; margin-top: 4rem; }
+  .ride-stage {
+    position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+    background: #9cc3e3; contain: paint;
+  }
+  .rw-sky { position: absolute; left: 0; top: 0; width: 100%; overflow: hidden; }
+  .rw-skyroll { display: flex; will-change: transform; }
+  .rw-skyroll img { display: block; flex: none; max-width: none; }
+  .rw-layer { position: absolute; left: 0; top: 0; display: block; max-width: none; will-change: transform; }
+  .rw-mist {
+    position: absolute; left: -12%; width: 124%; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(250,250,248,0.42), rgba(250,250,248,0) 68%);
+    filter: blur(6px);
+  }
+  .rw-mist-a { top: 49%; height: 12%; animation: drift 24s ease-in-out infinite alternate; }
+
+  /* the bike: a 672 x 775 sprite, placed and scaled by script */
+  .rs { position: absolute; left: 0; top: 0; width: 672px; height: 775px; transform-origin: 0 0; will-change: transform; --sp: 0; }
+  .rs > *, .rs-bike > * { position: absolute; left: 0; top: 0; display: block; }
+  .rs-shadow {
+    left: 40px !important; top: 664px !important; width: 640px; height: 112px; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(31,44,51,0.42), rgba(31,44,51,0) 70%);
+    transform: rotate(9deg);
+  }
+  .rs-bike { width: 100%; height: 100%; animation: bump 1.3s linear infinite; }
+  .rs-wheel, .rs-rider, .rs-lines, .rs-dust { width: 100%; height: 100%; }
+  .rs-lines { overflow: visible; opacity: min(0.9, calc(var(--sp) * 1.2)); }
+  .rs-lines path { stroke: #fafaf8; stroke-width: 7; stroke-linecap: round; fill: none; }
+  .rs-dust { overflow: visible; opacity: min(1, calc(var(--sp) * 3)); }
+  .wheel-blur, .wheel-spokes { opacity: min(1, calc(var(--sp) * 5)); }
+  .wheel-crisp { opacity: max(0, calc(1 - var(--sp) * 5)); }
+  .wheel-spokes path { fill: #1d2024; fill-opacity: 0.30; }
+  @keyframes bump {
+    0%, 100% { translate: 0 0; rotate: 0deg; }
+    14% { translate: 0 calc(var(--sp) * -3px - 0.8px); rotate: -0.12deg; }  28% { translate: 0 0.4px; rotate: 0.06deg; }
+    46% { translate: 0 calc(var(--sp) * -1.8px - 0.4px); rotate: -0.05deg; }  62% { translate: 0 0.5px; rotate: 0.08deg; }
+    80% { translate: 0 calc(var(--sp) * -3.4px - 0.8px); rotate: -0.14deg; } 90% { translate: 0 -0.2px; rotate: 0deg; }
+  }
+  .dust path { fill: #e6dcc8; stroke: #7a6d5b; stroke-width: 2.2; stroke-linejoin: round; }
+  .rs-dust path { fill: #e6dcc8; stroke: #7a6d5b; stroke-width: 2.6; stroke-linejoin: round; }
+  .puff {
+    opacity: 0; transform-box: fill-box; transform-origin: center;
+    animation: puff 1.8s ease-out infinite; animation-delay: calc(var(--i) * 0.45s);
+  }
+  @keyframes puff {
+    0%   { opacity: 0;   transform: translate(0, 0) scale(0.35); }
+    15%  { opacity: 0.9; }
+    100% { opacity: 0;   transform: translate(-190px, -46px) scale(1.9); }
+  }
+
+  .rw-hud {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+    padding: 0 3.5rem 1.8rem;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #f6f1e3; text-shadow: 0 1px 2px rgba(31,44,51,0.55);
+  }
+  .rw-trip b { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.1em; font-variant-numeric: tabular-nums; margin: 0 0.25em; }
+  .rw-hint { transition: opacity 0.3s; }
+
   /* WRITINGS */
   .writings-grid { display: grid; grid-template-columns: repeat(2,1fr); }
 
@@ -587,7 +656,6 @@
       border-left: none; align-items: center;
     }
     .portrait-frame { width: min(300px, 78%); }
-    .portrait-label { display: none; }
     .hero-rings, .hero-diagonals, .scroll-hint { display: none; }
     .portrait-rings { width: 340px; height: 340px; top: 55%; }
     h1.hero-name { font-size: clamp(4rem, 19vw, 6rem); margin-bottom: 1.8rem; }
@@ -598,6 +666,10 @@
     .journey-item { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.6rem 0; }
     .j-when { padding-top: 0; }
     .journey-facts { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 3.5rem; }
+    .road-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .roadshot-img { width: min(340px, 100%); }
+    .ride-track { height: 300vh; margin-top: 3rem; }
+    .rw-hud { padding: 0 1.5rem 1.3rem; }
     .writings-grid { grid-template-columns: 1fr; }
     .writing-card { border-right: none !important; padding: 2.2rem 0.4rem; }
     .writing-card:nth-child(n+3) { border-bottom: 0.5px solid var(--g200) !important; }
@@ -624,6 +696,7 @@
     .js .section-rule { transform: none; }
     .draw { stroke-dashoffset: 0; }
     .js .fade-line { opacity: 1; }
+    .rs-bike { animation: none !important; }
   }
 </style>
 </head>
@@ -634,6 +707,7 @@
   <a href="#" class="nav-name">Utsab Kafle</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#road">Road</a></li>
     <li><a href="#writings">Writings</a></li>
     <li><a href="#works">Works</a></li>
     <li><a href="#connect">Connect</a></li>
@@ -831,6 +905,88 @@
   </div>
 </section>
 
+<!-- ON THE ROAD -->
+<section id="road" class="section-wrap">
+  <div class="section-inner">
+    <div class="section-header" data-reveal>
+      <span class="section-num">03</span>
+      <h2 class="section-title">On the Road</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="road-grid">
+      <div data-reveal>
+        <p class="about-lead">Any free day, I am on the road. <em>A Pulsar 150, a raincoat, and wherever the next bend goes.</em></p>
+        <p class="about-body">Hills, tea gardens, and fog thick enough to lose the road in. I ride whenever I get the time, and I usually come back with something to write about.</p>
+        <div class="about-aside road-facts">
+          <div class="aside-item"><div class="aside-key">Ride</div><div class="aside-val">Bajaj Pulsar 150</div></div>
+          <div class="aside-item"><div class="aside-key">When</div><div class="aside-val">Any free day</div></div>
+          <div class="aside-item"><div class="aside-key">Weather</div><div class="aside-val">Fog is welcome</div></div>
+        </div>
+      </div>
+      <figure class="roadshot" data-reveal style="--d:0.15s">
+        <div class="roadshot-img">
+          <img src="assets/images/on-the-road.webp" alt="Illustration of Utsab standing on a rock in a grassy, misty field, arms spread wide" width="576" height="794" loading="lazy" />
+          <span class="mist mist-a" aria-hidden="true"></span>
+          <span class="mist mist-b" aria-hidden="true"></span>
+        </div>
+        <figcaption class="portrait-label">Somewhere in the fog</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- The ride: scrolling moves the bike along the road -->
+  <div class="ride-track" id="ride-track">
+    <div class="ride-stage" id="ride-stage" role="img" aria-label="Illustration of Utsab riding his black Pulsar 150 along a winding dirt road through green hills, with snow peaks and power lines in the distance. The bike moves along the road as the page scrolls.">
+      <div class="rw-sky" aria-hidden="true">
+        <div class="rw-skyroll" id="rw-skyroll">
+          <img src="assets/images/world-sky.webp" alt="" width="2000" height="560" />
+          <img src="assets/images/world-sky.webp" alt="" width="2000" height="560" />
+          <img src="assets/images/world-sky.webp" alt="" width="2000" height="560" />
+        </div>
+      </div>
+      <img class="rw-layer" id="rw-far" src="assets/images/world-far.webp" alt="" width="2400" height="480" />
+      <img class="rw-layer" id="rw-mid" src="assets/images/world-mid.webp" alt="" width="2900" height="460" />
+      <span class="rw-mist rw-mist-a" aria-hidden="true"></span>
+      <img class="rw-layer" id="rw-ground" src="assets/images/world-ground.webp" alt="" width="3400" height="400" />
+
+      <div class="rs" id="rs" aria-hidden="true">
+        <span class="rs-shadow"></span>
+        <svg class="rs-lines" viewBox="0 0 672 775"><g><path d="M70 330 L-40 330"/><path d="M40 380 L-90 380"/><path d="M80 440 L-20 440"/><path d="M60 500 L-70 500"/></g></svg>
+        <div class="rs-bike">
+          <svg class="rs-wheel" viewBox="0 0 672 775">
+            <defs><filter id="spokeblur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
+            <image class="wheel-crisp" href="assets/images/ride-wheel-crisp.webp" x="446" y="515" width="190" height="230"/>
+            <image class="wheel-blur" href="assets/images/ride-wheel.webp" x="446" y="515" width="190" height="230"/>
+            <g class="wheel-spokes" transform="translate(531 634) scale(0.837 1)" filter="url(#spokeblur)">
+              <g id="wedges">
+                <path d="M50 -9 L98 -15 L98 15 L50 9 Z"/>
+                <path d="M50 -9 L98 -15 L98 15 L50 9 Z" transform="rotate(72)"/>
+                <path d="M50 -9 L98 -15 L98 15 L50 9 Z" transform="rotate(144)"/>
+                <path d="M50 -9 L98 -15 L98 15 L50 9 Z" transform="rotate(216)"/>
+                <path d="M50 -9 L98 -15 L98 15 L50 9 Z" transform="rotate(288)"/>
+              </g>
+            </g>
+          </svg>
+          <img class="rs-rider" src="assets/images/rider.webp" alt="" width="672" height="775" />
+        </div>
+        <svg class="rs-dust" viewBox="0 0 672 775">
+          <g transform="translate(108 653)">
+            <g class="puff" style="--i:0"><path d="M-30 6 Q-34 -16 -14 -18 Q-8 -34 10 -26 Q30 -30 30 -10 Q42 2 26 10 Z"/></g>
+            <g class="puff" style="--i:1"><path d="M-26 8 Q-36 -10 -18 -16 Q-12 -32 6 -24 Q24 -32 28 -12 Q40 0 22 10 Z"/></g>
+            <g class="puff" style="--i:2"><path d="M-32 6 Q-30 -14 -12 -14 Q-4 -30 14 -22 Q34 -24 30 -6 Q38 6 24 10 Z"/></g>
+            <g class="puff" style="--i:3"><path d="M-24 6 Q-32 -12 -14 -18 Q-6 -30 10 -22 Q28 -28 28 -8 Q38 4 20 10 Z"/></g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="rw-hud" aria-hidden="true">
+        <span class="rw-trip">Trip <b id="rw-odo">000</b> km</span>
+        <span class="rw-hint" id="rw-hint">Scroll to ride ↓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WRITINGS -->
 <section id="writings" class="section-wrap">
   <!-- curves: left edge, flowing down -->
@@ -849,7 +1005,7 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 class="section-title">Writings & Poems</h2>
       <div class="section-rule"></div>
     </div>
@@ -905,7 +1061,7 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">Works & Projects</h2>
       <div class="section-rule"></div>
     </div>
@@ -954,7 +1110,7 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
       <h2 class="section-title">Connect</h2>
       <div class="section-rule"></div>
     </div>
@@ -1024,6 +1180,85 @@
 
   document.querySelectorAll('[data-reveal]').forEach(el => io ? io.observe(el) : el.classList.add('is-in'));
   art.forEach(svg => io ? io.observe(svg) : svg.classList.add('drawn'));
+  // On the Road: scrolling the sticky track drives the bike along the road.
+  (() => {
+    const track = document.getElementById('ride-track');
+    if (!track) return;
+    const stage = document.getElementById('ride-stage'), rs = document.getElementById('rs');
+    const skyroll = document.getElementById('rw-skyroll'), wedges = document.getElementById('wedges');
+    const odo = document.getElementById('rw-odo'), hint = document.getElementById('rw-hint');
+    const ROAD = [[-150,713.0],[-130,716.5],[-110,719.8],[-90,723.0],[-70,726.0],[-50,728.8],[-30,731.4],[-10,733.8],[10,736.1],[30,738.1],[50,739.9],[70,741.6],[90,743.1],[110,744.4],[130,745.5],[150,746.4],[170,747.3],[190,748.0],[210,748.6],[230,749.1],[250,749.5],[270,749.9],[290,750.2],[310,750.6],[330,750.9],[350,751.2],[370,751.6],[390,752.0],[410,752.4],[430,753.0],[450,753.6],[470,754.3],[490,755.1],[510,756.0],[530,757.0],[550,758.0],[570,759.2],[590,760.5],[610,761.9],[630,763.3],[650,764.8],[670,766.3],[690,767.9],[710,769.6],[730,771.2],[750,772.8],[770,774.4],[790,776.0],[810,777.5],[830,778.9],[850,780.2],[870,781.5],[890,782.6],[910,783.5],[930,784.4],[950,785.0],[970,785.6],[990,785.9],[1010,786.0],[1030,786.0],[1050,785.8],[1070,785.5],[1090,784.9],[1110,784.2],[1130,783.3],[1150,782.3],[1170,781.2],[1190,780.0],[1210,778.6],[1230,777.2],[1250,775.7],[1270,774.2],[1290,772.7],[1310,771.1],[1330,769.6],[1350,768.2],[1370,766.8],[1390,765.5],[1410,764.3],[1430,763.3],[1450,762.4],[1470,761.7],[1490,761.2],[1510,760.8],[1530,760.7],[1550,760.8],[1570,761.1],[1590,761.6],[1610,762.4],[1630,763.4],[1650,764.6],[1670,766.0],[1690,767.7],[1710,769.5],[1730,771.5],[1750,773.7],[1770,776.1],[1790,778.6],[1810,781.2],[1830,783.9],[1850,786.7],[1870,789.6],[1890,792.5],[1910,795.5],[1930,798.4],[1950,801.4],[1970,804.3],[1990,807.1],[2010,809.9],[2030,812.6],[2050,815.2],[2070,817.7],[2090,820.1],[2110,822.4],[2130,824.6],[2150,826.6],[2170,828.6],[2190,830.4],[2210,832.1],[2230,833.7],[2250,835.2],[2270,836.6],[2290,837.9],[2310,839.2],[2330,840.4],[2350,841.6],[2370,842.8],[2390,843.9],[2410,845.1],[2430,846.3],[2450,847.6],[2470,848.9],[2490,850.3],[2510,851.8],[2530,853.4],[2550,855.1],[2570,856.9],[2590,858.8],[2610,860.9],[2630,863.1],[2650,865.5],[2670,867.9],[2690,870.5],[2710,873.3],[2730,876.1],[2750,879.0],[2770,882.1],[2790,885.2],[2810,888.3],[2830,891.5],[2850,894.8],[2870,898.0],[2890,901.2],[2910,904.4],[2930,907.6],[2950,910.6],[2970,913.6],[2990,916.4],[3010,919.1],[3030,921.6],[3050,924.0],[3070,926.2],[3090,928.2],[3110,930.0],[3130,931.5],[3150,932.9],[3170,934.0],[3190,934.8],[3210,935.5],[3230,935.9],[3250,936.1],[3270,936.1],[3290,935.8],[3310,935.4],[3330,934.8],[3350,934.0],[3370,933.1],[3390,932.0],[3410,930.9],[3430,929.6],[3450,928.3],[3470,927.0],[3490,925.6],[3510,924.2],[3530,922.9],[3550,921.6]];                                  // road centre line, one point every 20 units from x = -150
+    const WORLD_W = 3400, ROAD_X0 = -150, ROAD_DX = 20;
+    const LAYERS = [                                          // image, size and top in world units, parallax factor
+      { el: document.getElementById('rw-far'),    w: 2400, h: 480, y: 160, f: 0.30 },
+      { el: document.getElementById('rw-mid'),    w: 2900, h: 460, y: 320, f: 0.65 },
+      { el: document.getElementById('rw-ground'), w: 3400, h: 400, y: 600, f: 1.00 },
+    ];
+    const SKY = { w: 2000, h: 560 }, ANCHOR = { x: 356, y: 725 }, WHEEL_R = 122;
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const roadAt = x => {
+      const i = clamp((x - ROAD_X0) / ROAD_DX, 0, ROAD.length - 2), i0 = Math.floor(i), t = i - i0;
+      const y = ROAD[i0][1] + (ROAD[i0 + 1][1] - ROAD[i0][1]) * t;
+      return { y, slope: (ROAD[i0 + 1][1] - ROAD[i0][1]) / ROAD_DX };
+    };
+
+    let s = 1, oy = 0, winW = 1600, cur = 0, target = 0, prevX = null, ang = 0, sp = 0, skyT = 0, raf = 0, last = 0, visible = false;
+
+    const layout = () => {
+      const W = stage.clientWidth, H = stage.clientHeight;
+      s = Math.max(H / 1000, W / 1900); winW = W / s; oy = H - 1000 * s;
+      for (const L of LAYERS) {
+        L.el.style.width = L.w * s + 'px'; L.el.style.height = L.h * s + 'px'; L.el.style.top = (L.y * s + oy) + 'px';
+      }
+      stage.querySelector('.rw-sky').style.top = oy + 'px';
+      skyroll.querySelectorAll('img').forEach(i => { i.style.width = SKY.w * s + 'px'; i.style.height = SKY.h * s + 'px'; });
+      const mist = stage.querySelector('.rw-mist-a'); mist.style.top = (500 * s + oy) + 'px'; mist.style.height = (120 * s) + 'px';
+    };
+    const readScroll = () => {
+      const r = track.getBoundingClientRect(), total = track.offsetHeight - stage.offsetHeight;
+      target = clamp(-r.top / total, 0, 1);
+    };
+    const draw = dt => {
+      const bx = 320 + (3100 - 320) * cur;
+      const { y, slope } = roadAt(bx);
+      const k = 0.26 + 0.38 * clamp((y - 690) / 250, 0, 1);
+      const cam = clamp(bx - 0.42 * winW, 0, WORLD_W - winW);
+      for (const L of LAYERS) L.el.style.transform = 'translate3d(' + (-cam * L.f * s).toFixed(1) + 'px,0,0)';
+      const tile = SKY.w * s, off = (((cam * 0.08 + skyT) * s) % tile + tile) % tile;
+      skyroll.style.transform = 'translate3d(' + (-off).toFixed(1) + 'px,0,0)';
+      const tilt = clamp((Math.atan(slope) * 57.3 - 5) * 0.7, -8, 8);
+      const X = (bx - cam) * s, Y = y * s + oy, m = k * s;
+      rs.style.transform = 'translate3d(' + X.toFixed(1) + 'px,' + Y.toFixed(1) + 'px,0) rotate(' + tilt.toFixed(2) + 'deg) scale(' + m.toFixed(4) + ') translate(' + (-ANCHOR.x) + 'px,' + (-ANCHOR.y) + 'px)';
+      // wheel turns with the distance covered (radius shrinks with perspective)
+      if (prevX !== null && dt > 0) {
+        const dx = bx - prevX, dist = Math.hypot(dx, dx * slope);
+        ang += dist / (WHEEL_R * k) * 57.3;
+        const v = Math.abs(dx) / dt;                           // world units per second
+        sp += (clamp(v / 650, 0, 1) - sp) * (1 - Math.exp(-dt * 9));
+      }
+      prevX = bx;
+      if (reduce) sp = 0;
+      wedges.setAttribute('transform', 'rotate(' + (ang % 360).toFixed(1) + ')');
+      rs.style.setProperty('--sp', sp.toFixed(3));
+      odo.textContent = String(Math.round(cur * 150)).padStart(3, '0');
+      hint.style.opacity = (1 - clamp(cur * 14, 0, 1)).toFixed(2);
+    };
+    const frame = now => {
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      readScroll();
+      cur = reduce ? target : cur + (target - cur) * (1 - Math.exp(-dt * 10));
+      if (!reduce) skyT += dt * 14;
+      draw(dt);
+      raf = visible || Math.abs(target - cur) > 0.0004 || sp > 0.002 ? requestAnimationFrame(frame) : 0;
+    };
+    const kick = () => { if (!raf && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(frame); } };
+
+    layout(); readScroll(); cur = target; draw(0); prevX = null;
+    addEventListener('resize', () => { layout(); draw(0); });
+    addEventListener('scroll', kick, { passive: true });
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) kick(); }, { rootMargin: '200px' }).observe(track);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(raf); raf = 0; } else kick(); });
+  })();
 </script>
 </body>
 </html>
