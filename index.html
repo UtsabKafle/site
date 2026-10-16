@@ -41,11 +41,15 @@
       "url": "https://utsabkafle.com.np/",
       "image": "https://utsabkafle.com.np/assets/images/image2.png",
       "jobTitle": "Founder, Teacher, Developer",
+      "alumniOf": "Tribhuvan University",
+      "knowsLanguage": ["en", "ne", "hi"],
       "worksFor": {
         "@id": "https://consicalabs.com/#organization"
       },
       "sameAs": [
         "https://consicalabs.com",
+        "https://github.com/utsabkafle",
+        "https://www.linkedin.com/in/utsabkafle/",
         "https://www.tiktok.com/@kafleutsab",
         "https://www.facebook.com/utshub"
       ]
@@ -375,6 +379,26 @@
   .aside-val a { color: var(--g800); text-decoration: none; border-bottom: 0.5px solid var(--g300); transition: color 0.2s, border-color 0.2s; }
   .aside-val a:hover { color: var(--ink); border-color: var(--ink); }
 
+  /* JOURNEY */
+  .journey-list { list-style: none; border-top: 0.5px solid var(--g200); }
+  .journey-item {
+    display: grid; grid-template-columns: 10rem 1fr; gap: 2.5rem;
+    padding: 1.9rem 0; border-bottom: 0.5px solid var(--g200);
+  }
+  .j-when { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g500); padding-top: 0.55rem; }
+  .j-role { font-size: 1.5rem; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; }
+  .j-org { font-style: italic; color: var(--g500); font-size: 1.1rem; }
+  .j-desc { color: var(--g600); font-size: 1.02rem; line-height: 1.65; margin-top: 0.35rem; max-width: 60ch; }
+  .j-note { margin-top: 1rem; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g400); }
+
+  .journey-facts { display: grid; grid-template-columns: 1.3fr 1.2fr 0.7fr; gap: 3.5rem; margin-top: 5rem; }
+  .facts-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--g500); padding-bottom: 0.9rem; margin-bottom: 1.1rem; border-bottom: 0.5px solid var(--g200); font-weight: 400; }
+  .fact { margin-bottom: 1.1rem; }
+  .fact-main { font-size: 1.15rem; line-height: 1.35; }
+  .fact-sub { font-size: 0.98rem; font-style: italic; color: var(--g500); }
+  .toolkit { font-size: 1.08rem; line-height: 1.9; color: var(--g800); }
+  .toolkit span + span::before { content: ' · '; color: var(--g400); }
+
   /* WRITINGS */
   .writings-grid { display: grid; grid-template-columns: repeat(2,1fr); }
 
@@ -571,6 +595,9 @@
     .section-header { margin-bottom: 3rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-lead { font-size: 1.6rem; }
+    .journey-item { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.6rem 0; }
+    .j-when { padding-top: 0; }
+    .journey-facts { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 3.5rem; }
     .writings-grid { grid-template-columns: 1fr; }
     .writing-card { border-right: none !important; padding: 2.2rem 0.4rem; }
     .writing-card:nth-child(n+3) { border-bottom: 0.5px solid var(--g200) !important; }
@@ -708,20 +735,97 @@
       <div class="about-aside" data-reveal style="--d:0.15s">
         <div class="aside-item">
           <div class="aside-key">Based in</div>
-          <div class="aside-val">Nepal</div>
+          <div class="aside-val">Jhapa, Nepal</div>
         </div>
         <div class="aside-item">
           <div class="aside-key">Company</div>
           <div class="aside-val"><a href="https://consicalabs.com" target="_blank" rel="noopener">Consica Labs ↗</a></div>
         </div>
         <div class="aside-item">
-          <div class="aside-key">Craft</div>
-          <div class="aside-val">Software & Teaching</div>
+          <div class="aside-key">Studying</div>
+          <div class="aside-val">BCA, Tribhuvan University</div>
         </div>
         <div class="aside-item">
           <div class="aside-key">Currently</div>
-          <div class="aside-val">Building. Writing. Reading.</div>
+          <div class="aside-val">Teaching at Shree Bhanu. Building Consica Labs.</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="section-wrap">
+  <div class="section-inner">
+    <div class="section-header" data-reveal>
+      <span class="section-num">02</span>
+      <h2 class="section-title">Journey</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <ol class="journey-list">
+      <li class="journey-item" data-reveal>
+        <span class="j-when">2082 — Now</span>
+        <div>
+          <div class="j-role">Teacher, Computer Engineering</div>
+          <div class="j-org">Shree Bhanu Secondary School, Laljhoda</div>
+          <p class="j-desc">Back at my alma mater, teaching electrical engineering, DBMS and programming.</p>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="j-when">Now</span>
+        <div>
+          <div class="j-role">Founder &amp; CTO</div>
+          <div class="j-org">Consica Labs, Jhapa</div>
+          <p class="j-desc">AI-integrated software for schools and local businesses.</p>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="j-when">Now</span>
+        <div>
+          <div class="j-role">Full-stack Developer, Freelance</div>
+          <div class="j-org">Lami Nepal, Kathmandu</div>
+          <p class="j-desc">Building their internal MIS and looking after the servers and backend behind their apps.</p>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="j-when">2079 — 2082</span>
+        <div>
+          <div class="j-role">Founder &amp; Instructor</div>
+          <div class="j-org">Geekbind Computer Institute, Jhiljhile</div>
+          <p class="j-desc">Affordable tech education and awareness campaigns, working with local schools to narrow the digital divide.</p>
+        </div>
+      </li>
+      <li class="journey-item" data-reveal>
+        <span class="j-when">2078 — 2079</span>
+        <div>
+          <div class="j-role">Intern</div>
+          <div class="j-org">Quality IT Solutions Nepal</div>
+          <p class="j-desc">Where I learned most of my Python and Django.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="j-note">Years in Bikram Sambat</p>
+
+    <div class="journey-facts">
+      <div data-reveal>
+        <h3 class="facts-title">Education</h3>
+        <div class="fact">
+          <div class="fact-main">Bachelor of Computer Application</div>
+          <div class="fact-sub">Tribhuvan University, Model Campus Damak · 2080 — Now</div>
+        </div>
+        <div class="fact">
+          <div class="fact-main">Computer Engineering, Grades 9 — 12</div>
+          <div class="fact-sub">Shree Bhanu Secondary School · 2075 — 2079</div>
+        </div>
+      </div>
+      <div data-reveal style="--d:0.1s">
+        <h3 class="facts-title">Toolkit</h3>
+        <p class="toolkit"><span>Python</span><span>Django</span><span>Java</span><span>C/C++</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Celery</span><span>Docker</span><span>Nginx</span><span>TensorFlow</span><span>PyTorch</span></p>
+      </div>
+      <div data-reveal style="--d:0.2s">
+        <h3 class="facts-title">Languages</h3>
+        <p class="toolkit">English<br/>Nepali<br/>Hindi</p>
       </div>
     </div>
   </div>
@@ -745,7 +849,7 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">02</span>
+      <span class="section-num">03</span>
       <h2 class="section-title">Writings & Poems</h2>
       <div class="section-rule"></div>
     </div>
@@ -801,7 +905,7 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 class="section-title">Works & Projects</h2>
       <div class="section-rule"></div>
     </div>
@@ -850,23 +954,27 @@
 
   <div class="section-inner">
     <div class="section-header" data-reveal>
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">Connect</h2>
       <div class="section-rule"></div>
     </div>
     <p class="connect-intro" data-reveal>Find me where the internet breathes — or simply write.</p>
     <a href="mailto:utsab@consicalabs.com" class="connect-email" data-reveal style="--d:0.1s">utsab@consicalabs.com<span class="arrow" aria-hidden="true">↗</span></a>
     <div class="connect-row" data-reveal style="--d:0.2s">
-      <a href="https://www.tiktok.com/@kafleutsab" target="_blank" rel="noopener" class="connect-item">
-        <span class="ci-text"><span class="ci-platform">TikTok</span><span class="ci-handle">@kafleutsab</span></span>
+      <a href="https://github.com/utsabkafle" target="_blank" rel="noopener" class="connect-item">
+        <span class="ci-text"><span class="ci-platform">GitHub</span><span class="ci-handle">utsabkafle</span></span>
+        <span class="ci-arrow">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/utsabkafle/" target="_blank" rel="noopener" class="connect-item">
+        <span class="ci-text"><span class="ci-platform">LinkedIn</span><span class="ci-handle">utsabkafle</span></span>
         <span class="ci-arrow">↗</span>
       </a>
       <a href="https://www.facebook.com/utshub" target="_blank" rel="noopener" class="connect-item">
         <span class="ci-text"><span class="ci-platform">Facebook</span><span class="ci-handle">utshub</span></span>
         <span class="ci-arrow">↗</span>
       </a>
-      <a href="https://consicalabs.com" target="_blank" rel="noopener" class="connect-item">
-        <span class="ci-text"><span class="ci-platform">Company</span><span class="ci-handle">Consica Labs</span></span>
+      <a href="https://www.tiktok.com/@kafleutsab" target="_blank" rel="noopener" class="connect-item">
+        <span class="ci-text"><span class="ci-platform">TikTok</span><span class="ci-handle">@kafleutsab</span></span>
         <span class="ci-arrow">↗</span>
       </a>
     </div>
