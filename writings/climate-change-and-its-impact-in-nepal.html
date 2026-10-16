@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://utsabkafle.com.np/assets/images/image2.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles/writing.css" />
 <script type="application/ld+json">
 {
@@ -145,7 +145,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-left">Utsab Kafle — 2025</span>
+  <span class="footer-left">Utsab Kafle — <span class="year">2026</span></span>
   <span class="footer-right">All writing &amp; work are my own.</span>
 </footer>
 
@@ -154,6 +154,7 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
+  document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
 </script>
 </body>
 </html>
