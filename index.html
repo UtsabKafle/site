@@ -937,7 +937,7 @@
 
   <!-- The ride: scrolling moves the bike along the road -->
   <div class="ride-track" id="ride-track">
-    <div class="ride-stage" id="ride-stage" role="img" aria-label="Illustration of Utsab riding his black Pulsar 150 along a hill road through eastern Nepal: Jhapa paddy fields and areca palms, the tea gardens of Ilam, the Tamor river valley with terraced hills, and the snow peaks of Kanchenjunga. The bike moves along the road as the page scrolls.">
+    <div class="ride-stage" id="ride-stage" role="img" aria-label="Illustration of Utsab riding his black Pulsar 150 along a winding hill road, with green hills, pine slopes and snow peaks in the distance. The bike moves along the road as the page scrolls.">
       <div class="rw-sky" aria-hidden="true">
         <div class="rw-skyroll" id="rw-skyroll">
           <img src="assets/images/world-sky.webp" alt="" width="2000" height="560" />
@@ -948,7 +948,7 @@
       <img class="rw-layer" id="rw-far" src="assets/images/world-far.webp" alt="" width="3000" height="490" />
       <img class="rw-layer" id="rw-mid" src="assets/images/world-mid.webp" alt="" width="4300" height="470" />
       <span class="rw-mist rw-mist-a" aria-hidden="true"></span>
-      <img class="rw-layer" id="rw-ground" src="assets/images/world-ground.webp" alt="" width="5600" height="530" />
+      <img class="rw-layer" id="rw-ground" src="assets/images/world-ground.webp" alt="" width="5600" height="480" />
 
       <div class="rs" id="rs" aria-hidden="true">
         <span class="rs-shadow"></span>
@@ -1193,7 +1193,7 @@
     const LAYERS = [                                          // image, size and top in world units, parallax factor
       { el: document.getElementById('rw-far'),    w: 3000, h: 490, y: 150, f: 0.30 },
       { el: document.getElementById('rw-mid'),    w: 4300, h: 470, y: 330, f: 0.65 },
-      { el: document.getElementById('rw-ground'), w: 5600, h: 530, y: 470, f: 1.00 },
+      { el: document.getElementById('rw-ground'), w: 5600, h: 480, y: 520, f: 1.00 },
     ];
     const SKY = { w: 2000, h: 560 }, ANCHOR = { x: 356, y: 725 }, WHEEL_R = 122;
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
